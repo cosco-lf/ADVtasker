@@ -247,6 +247,16 @@ function mailMe($to,$from,$subject,$param,$type,$with_files=false) {
     mail($to, $subject, $zag, $headers);
 }
 
+function addLine($type,$name,$caption,$placeholder='') {
+    $array = array(
+        'type' => $type,
+        'name' => $name,
+        'caption' => $caption,
+        'placeholder' => $placeholder
+    );
+    return $array;
+}
+
 function generateForm($array) {
     $form = '';
     if (is_array($array)) {
