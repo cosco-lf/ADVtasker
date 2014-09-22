@@ -18,14 +18,6 @@ $modAction = array('add','edit','delete');
 
 $setting = selectAll('smile_settings',4);
 
-//$onPageSearch = $setting['page_search'];
-//$onPageUser = $setting['page_lk'];
-//$onPageAdmin = $setting['page_admin'];
-//
-//$userOnPage = 10;
-//
-//$auto = $setting['auto'];
-
 $adminEmail = $setting['email'];
 
 ?>
