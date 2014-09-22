@@ -1,5 +1,8 @@
 AddDefaultCharset UTF-8
 RewriteEngine On
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
+  # add trailing slashes
+  RewriteCond %{REQUEST_FILENAME} !-d
+ RewriteCond %{REQUEST_FILENAME} !-f
+ RewriteRule .*[^/]$ http://%{HTTP_HOST}/$0/ [L,R=301]
+
 RewriteRule .* index.php [L]

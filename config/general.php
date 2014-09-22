@@ -247,6 +247,32 @@ function mailMe($to,$from,$subject,$param,$type,$with_files=false) {
     mail($to, $subject, $zag, $headers);
 }
 
+function generateForm($array) {
+    $form = '';
+    if (is_array($array)) {
+        foreach ($array as $el) {
+            $newline = '';
+            switch (@$el['type']) {
+                case 'checkbox':
+                    $newline .= '<div class="checkbox">';
+                    break;
+                default:
+                    $newline .= '<div class="form-group">';
+                    $newline .= '<label for="'.@$el['name'].'">'.@$el['caption'].'</label>';
+                    $newline .= '<input type="'.@$el['type'].'" class="form-control" id="'.@$el['name'].'" name="'.@$el['name'].'" placeholder="'.@$el['placeholder'].'"/>';
+                    if (isset($el['help'])) {
+                        $newline .= '<p class="help-block">'.@$el['help'].'</p>';
+                    }
+                    $newline .= '</div>';
+                    break;
+            }
+            $form .= $newline;
+        }
+    }
+    return $form;
+}
+
+
 //timer
 //$start = microtime(true);
 //$time_taken = microtime(true) - $start;
