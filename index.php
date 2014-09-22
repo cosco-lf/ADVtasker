@@ -3,7 +3,7 @@ session_start();//ffff
 error_reporting(E_ALL);
 include_once("config/general.php");
 include_once("config/mysql.php");
-//wefwefwefwefwe
+//new
 
 $errors = '';
 connectToDB($db['host'],$db['user'],$db['password'],$db['dbname']);
