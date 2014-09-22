@@ -20,7 +20,7 @@ $subModul = generateSubModulAddress($urlParts);
 $ismainpage = false;
 $isAdmin = false;
 $is404 = false;
-//test changes test
+//test
 // LANGUAGE SETTINGS
 if (isset($_GET["lang"])) {
   $langID = (int)$_GET["lang"];
