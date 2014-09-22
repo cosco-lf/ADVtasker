@@ -1,4 +1,7 @@
 <div class="container">
+    <form class="form-inline" method="post">
+        <?=$form;?>
+    </form>
 
     <div class="row">
         <form action="" class="form-inline" role="form" method="post">

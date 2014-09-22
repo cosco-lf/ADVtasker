@@ -255,6 +255,12 @@ function generateForm($array) {
             switch (@$el['type']) {
                 case 'checkbox':
                     $newline .= '<div class="checkbox">';
+                    $newline .= '<label>';
+                    $newline .= '<input type="'.@$el['type'].' name="'.@$el['name'].'" />'.@$el['caption'].'</label>';
+                    $newline .= '</div>';
+                    break;
+                case 'button':
+                    $newline .= '<button type="submit" class="btn btn-default">'.@$el['caption'].'</button>';
                     break;
                 default:
                     $newline .= '<div class="form-group">';
@@ -268,6 +274,7 @@ function generateForm($array) {
             }
             $form .= $newline;
         }
+        $form.= '<input type="hidden" name="save" value="1" />';
     }
     return $form;
 }
