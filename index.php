@@ -1,9 +1,8 @@
 <?php
-session_start();//ffff
+session_start();
 error_reporting(E_ALL);
 include_once("config/general.php");
 include_once("config/mysql.php");
-//delete new 4
 
 $errors = '';
 connectToDB($db['host'],$db['user'],$db['password'],$db['dbname']);
