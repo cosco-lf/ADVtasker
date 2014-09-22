@@ -1,0 +1,25 @@
+<?php
+if ($isAdmin) {
+    if (isset($_POST['save'])) {
+        $id = trim(@$_POST['id']);
+
+        if ($id <= 0) {
+            $errors[] = 'id';
+        }
+        if (is_array($errors)) {
+
+        } else {
+            mysql_query("UPDATE smile_users SET remove=1 WHERE id=".$id);
+            if (mysql_error()) {
+                $errors[] = 'sql';
+                header('Location: '.$siteurl.'/admin/clients/?errors[]=sql', true, 301);
+                die;
+            } else {
+                header('Location: '.$siteurl.'/admin/clients/', true, 301);
+                die;
+            }
+        }
+
+    }
+}
+?>
