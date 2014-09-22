@@ -9,7 +9,7 @@ if ($isAdmin) {
         if (is_array($errors)) {
 
         } else {
-            mysql_query("DELETE FROM smile_lang WHERE id=".$id);
+            mysql_query("DELETE FROM tasker_lang WHERE id=".$id);
             if (mysql_error()) {
                 $errors[] = 'sql';
                 header('Location: '.$siteurl.'/admin/lang/?errors[]=sql', true, 301);

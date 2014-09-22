@@ -14,8 +14,8 @@ if (isset($_POST['save'])) {
     }
 
     if ($num != '') {
-        if (!existThis('smile_balance','client_number='.sql_quote($num))) {
-            mysql_query('INSERT INTO `smile_balance` (`client_number`) VALUES ("'.sql_quote($num).'")');
+        if (!existThis('tasker_balance','client_number='.sql_quote($num))) {
+            mysql_query('INSERT INTO `tasker_balance` (`client_number`) VALUES ("'.sql_quote($num).'")');
         }
     }
 
@@ -23,7 +23,7 @@ if (isset($_POST['save'])) {
     if (is_array($errors)) {
 
     } else {
-        mysql_query("UPDATE `smile_users` SET first='".sql_quote($first)."',second='".sql_quote($second)."', third='".sql_quote($third)."', tel='".sql_quote($tel)."', client_number='".sql_quote($num)."' WHERE `id`='".sql_quote($id)."'");
+        mysql_query("UPDATE `tasker_users` SET first='".sql_quote($first)."',second='".sql_quote($second)."', third='".sql_quote($third)."', tel='".sql_quote($tel)."', client_number='".sql_quote($num)."' WHERE `id`='".sql_quote($id)."'");
         if (mysql_error()) {
             $errors[] = 'sql';
         } else {

@@ -3,12 +3,12 @@
         if (isset($_GET['id']) && @$_GET['id']) {
             $exist = true;
             $id = $_GET['id'];
-            $partner = selectAll('smile_users',4,'*','id='.sql_quote($id));
-            $airports = selectAll('smile_airports',1,'*','','IATA');
+            $partner = selectAll('tasker_users',4,'*','id='.sql_quote($id));
+            $airports = selectAll('tasker_airports',1,'*','','IATA');
             if (!is_array(@$partner)) {
                 $exist = false;
             }
-            $partner['formula'] = selectAll('smile_formula',4,'*','id_user='.sql_quote($id));
+            $partner['formula'] = selectAll('tasker_formula',4,'*','id_user='.sql_quote($id));
             if (isset($partner['formula']['type']) && @$partner['formula']['type'] == 2) {
                 $partner['formula']['percent'] = explode('|',$partner['formula']['percent']);
                 $tmp = explode('|',$partner['formula']['diapazon']);

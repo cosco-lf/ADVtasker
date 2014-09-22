@@ -83,7 +83,7 @@ function selectAll ($table ,$type = 1, $what = '*', $dopWhere = '', $dopOrder = 
 }
 
 function getPagesUrls() {
-    $pages = selectAll('smile_pages',1,'url');
+    $pages = selectAll('tasker_pages',1,'url');
     $pagesUrl = array();
     if ($pages !== false) {
         foreach ($pages as $p) {
@@ -159,7 +159,7 @@ function generateSubModulAddress($url) {
     return $modul;
 }
 function existLogin($login) {
-    $result = mysql_query("SELECT login FROM smile_users WHERE login = '".$login."'");
+    $result = mysql_query("SELECT login FROM tasker_users WHERE login = '".$login."'");
     if(mysql_num_rows($result) == 0) {
         return false;
     } else {

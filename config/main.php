@@ -16,7 +16,7 @@ $noGet = $noGet[0];
 $modules = array('partners','registration','my','admin','registration-partners','clients','buys','spends','remind');
 $modAction = array('add','edit','delete');
 
-$setting = selectAll('smile_settings',4);
+$setting = selectAll('tasker_settings',4);
 
 $adminEmail = $setting['email'];
 
