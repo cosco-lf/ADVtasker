@@ -4,6 +4,6 @@ if ($isAdmin) {
     if (isset($_POST['search']) && @$_POST['search'] != '') {
         $where .= ' AND login LIKE "%'.sql_quote($_POST['search']).'%"';
     }
-    $client = selectAll('smile_users',1,'*',$where,'login');
+    $client = selectAll('tasker_users',1,'*',$where,'login');
 }
 ?>

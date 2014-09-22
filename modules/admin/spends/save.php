@@ -12,9 +12,9 @@ if ($isAdmin) {
 
     if ($date != '' && $summa != '' && $client !='') {
       $date = date("Y-m-d H:i:s",strtotime($date));
-      mysql_query("INSERT INTO smile_spends (client_number,summa,date_spend) VALUES ('".sql_quote($client)."','".sql_quote($summa)."','".sql_quote($date)."')");
+      mysql_query("INSERT INTO tasker_spends (client_number,summa,date_spend) VALUES ('".sql_quote($client)."','".sql_quote($summa)."','".sql_quote($date)."')");
       $id_post = mysql_insert_id();
-      mysql_query("INSERT INTO smile_balance (client_number,type,id_post,summa) VALUE  (".sql_quote($client).",2,$id_post,".sql_quote($summa).")");
+      mysql_query("INSERT INTO tasker_balance (client_number,type,id_post,summa) VALUE  (".sql_quote($client).",2,$id_post,".sql_quote($summa).")");
     }
 
   } elseif ($_POST['save'] == 1) {
@@ -28,8 +28,8 @@ if ($isAdmin) {
 
     if ($id != '' && $date != '' && $summa != '' && $client !='') {
       $date = date("Y-m-d H:i:s",strtotime($date));
-      mysql_query("UPDATE smile_spends SET date_spend='".sql_quote($date)."', client_number='".sql_quote($client)."', summa='".sql_quote($summa)."' WHERE id='".$id."'");
-      mysql_query("UPDATE smile_balance SET client_number='".sql_quote($client)."', summa='".sql_quote($summa)."' WHERE type=2 AND id_post='".$id."'");
+      mysql_query("UPDATE tasker_spends SET date_spend='".sql_quote($date)."', client_number='".sql_quote($client)."', summa='".sql_quote($summa)."' WHERE id='".$id."'");
+      mysql_query("UPDATE tasker_balance SET client_number='".sql_quote($client)."', summa='".sql_quote($summa)."' WHERE type=2 AND id_post='".$id."'");
     }
 
   }

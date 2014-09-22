@@ -1,21 +1,12 @@
 <?php
 
-$db["prefix"]="smile_";
+$db["prefix"]="tasker_";
 
-if ($_SERVER["HTTP_HOST"] == "smile-mile:8888") {
+    $db["host"]="db36.valuehost.ru";
+    $db["user"]="podstava_task";
+    $db["password"]="Fcasn27yc";
+    $db["dbname"]="podstava_task";
 
-  $db["host"]="localhost";
-  $db["user"]="root";
-  $db["password"]="root";
-  $db["dbname"]="smile-mile";
 
-} else {
-
-    $db["host"]="advseo.mysql";
-    $db["user"]="advseo_smile";
-    $db["password"]="5iyew6xv";
-    $db["dbname"]="advseo_smile";
-
-}
 
 ?>

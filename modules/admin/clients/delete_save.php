@@ -9,7 +9,7 @@ if ($isAdmin) {
         if (is_array($errors)) {
 
         } else {
-            mysql_query("UPDATE smile_users SET remove=1 WHERE id=".$id);
+            mysql_query("UPDATE tasker_users SET remove=1 WHERE id=".$id);
             if (mysql_error()) {
                 $errors[] = 'sql';
                 header('Location: '.$siteurl.'/admin/clients/?errors[]=sql', true, 301);
