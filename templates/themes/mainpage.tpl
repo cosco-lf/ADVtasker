@@ -13,7 +13,7 @@
     <div class="row">
         <form class="form-inline" role="form">
         <div class="form-group">
-            <label for="exampleInputEmail1">Логин</label>
+            <label for="exampleInputLogin1">Логин</label>
             <input type="email" class="form-control" id="exampleInputLogin1" placeholder="Введите логин">
         </div>
         <div class="form-group">
