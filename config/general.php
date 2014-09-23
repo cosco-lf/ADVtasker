@@ -62,12 +62,6 @@ function selectAll ($table ,$type = 1, $what = '*', $dopWhere = '', $dopOrder = 
                 $result[$row['id']]=$row;
             }
             break;
-        case 7:
-            //только для smile&mile
-            while ($row=@mysql_fetch_assoc($res)) {
-                $result[$row['id_lang']][$row['id_word']]=$row;
-            }
-            break;
         default:
             while ($row=@mysql_fetch_assoc($res)) {
                 $result[]=$row;
@@ -247,12 +241,15 @@ function mailMe($to,$from,$subject,$param,$type,$with_files=false) {
     mail($to, $subject, $zag, $headers);
 }
 
-function addLine($type,$name,$caption,$placeholder='') {
+function addLine($type,$name,$caption,$placeholder='',$value='',$validation='',$values=array()) {
     $array = array(
         'type' => $type,
         'name' => $name,
         'caption' => $caption,
-        'placeholder' => $placeholder
+        'placeholder' => $placeholder,
+        'value' => $value,
+        'valid' => $validation,
+        'values' => $values
     );
     return $array;
 }
@@ -272,10 +269,42 @@ function generateForm($array) {
                 case 'button':
                     $newline .= '<button type="submit" class="btn btn-default">'.@$el['caption'].'</button>';
                     break;
+                case 'textarea':
+                    $newline .= '<div class="form-group">';
+                    $newline .= '<label for="'.@$el['name'].'">'.@$el['caption'].'</label>';
+                    $newline .= '<textarea class="form-control" id="'.@$el['name'].'" name="'.@$el['name'].'" placeholder="'.@$el['placeholder'].'">'.@$el['value'].'</textarea>';
+                    if (isset($el['help'])) {
+                        $newline .= '<p class="help-block">'.@$el['help'].'</p>';
+                    }
+                    $newline .= '</div>';
+                    break;
+                case 'select':
+                    $newline .= '<div class="form-group">';
+                    $newline .= '<label for="'.@$el['name'].'">'.@$el['caption'].'</label>';
+                    $newline .= '<select class="form-control" id="'.@$el['name'].'" name="'.@$el['name'].'" >';
+                    $newline .= '<option value="false">---</option>';
+                    if (is_array($el['values'])) {
+                        foreach ($el['values'] as $v) {
+                            if ($v['id'] == $el['value']) {
+                                $newline .= '<option value="'.$v['id'].'" selected>'.$v['caption'].'</option>';
+                            } else {
+                                $newline .= '<option value="'.$v['id'].'">'.$v['caption'].'</option>';
+                            }
+                        }
+                    }
+                    $newline .= '</select>';
+                    if (isset($el['help'])) {
+                        $newline .= '<p class="help-block">'.@$el['help'].'</p>';
+                    }
+                    $newline .= '</div>';
+                    break;
                 default:
                     $newline .= '<div class="form-group">';
                     $newline .= '<label for="'.@$el['name'].'">'.@$el['caption'].'</label>';
-                    $newline .= '<input type="'.@$el['type'].'" class="form-control" id="'.@$el['name'].'" name="'.@$el['name'].'" placeholder="'.@$el['placeholder'].'"/>';
+                    $newline .= '<input type="'.@$el['type'].'" class="form-control" id="'.@$el['name'].'" name="'.@$el['name'].'" placeholder="'.@$el['placeholder'].'" value="'.@$el['value'].'"/>';
+                    if (@$el['type'] == 'file' && @$el['value'] != '') {
+                        $newline .= '<input type="hidden" name="old_file" value="'.@$el['value'].'"/>';
+                    }
                     if (isset($el['help'])) {
                         $newline .= '<p class="help-block">'.@$el['help'].'</p>';
                     }
