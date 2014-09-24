@@ -1,8 +1,11 @@
 </div>
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="/js/bootstrap.min.js"></script>
 <script src="/js/common.js"></script>
+<!-- todo if чтобы не везде грузить -->
+<script src='/js/lib/moment.min.js'></script>
+<script src='/js/fullcalendar.min.js'></script>
+<script src='/js/lang-all.js'></script>
 </body>
 </html>

@@ -23,8 +23,7 @@ if (isset($_POST['save'])) {
     }
 
     $pass = md5($pass);
-    $time = time();
-    mysql_query("INSERT INTO ".$db['prefix']."users values (null,'".sql_quote($login)."','".sql_quote($pass)."','".sql_quote($icq)."','".sql_quote($skype)."','".sql_quote($email)."','".sql_quote($tel)."','".sql_quote($name)."','".sql_quote($photo)."','".sql_quote($text)."','".sql_quote($id_role)."','".sql_quote($id_group)."',1,$time,'')");
+    mysql_query("INSERT INTO ".$db['prefix']."users values (null,'".sql_quote($login)."','".sql_quote($pass)."','".sql_quote($icq)."','".sql_quote($skype)."','".sql_quote($email)."','".sql_quote($tel)."','".sql_quote($name)."','".sql_quote($photo)."','".sql_quote($text)."','".sql_quote($id_role)."','".sql_quote($id_group)."',1,CURRENT_TIMESTAMP,'')");
     if (mysql_error()) {
         $errors[] = 'sql';
     } else {

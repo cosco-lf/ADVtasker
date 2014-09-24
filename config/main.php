@@ -13,7 +13,7 @@ $noGet = explode("?",$current);
 $noGet = $noGet[0];
 
 
-$modules = array('partners','registration','my','admin','registration-partners','clients','buys','spends','remind','settings');
+$modules = array('partners','registration','my','admin','registration-partners','clients','buys','spends','remind','settings','tasker');
 $modAction = array('add','edit','delete');
 
 $setting = selectAll('tasker_settings',4);
